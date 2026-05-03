@@ -1,0 +1,163 @@
+AI-Review-Bot/
+│
+├── data/
+│   └── dataset.csv            # Training dataset
+│
+├── models/
+│   ├── clf_model.pkl          # Clarity model
+│   ├── reg_model.pkl          # Score model
+│   ├── vectorizer.pkl         # TF-IDF model
+│   └── le_clarity.pkl         # Label encoder
+│
+├── auto_data.py               # Auto dataset generator
+├── train.py                   # Model training script
+├── pipeline.py                # Full automation pipeline
+├── predict.py                 # Prediction logic
+├── app.py                     # Flask backend API
+│
+└── requirements.txt           # Libraries
+
+
+🔄 🧠 COMPLETE PIPELINE FLOW
+
+1. Generate Data → 2. Train Model → 3. Save Model → 4. API Request → 5. Predict → 6. Rule Check → 7. Score Adjust → 8. Translate → 9. Response
+
+
+
+
+🔍 STEP-BY-STEP PIPELINE EXPLANATION
+🟢 STEP 1: DATA GENERATION (auto_data.py)
+
+👉 What happens:
+
+Automatically creates dataset
+Adds:
+Text
+Clarity (good/medium/poor)
+Score (1–10)
+Output → data/dataset.csv
+🟢 STEP 2: MODEL TRAINING (train.py)
+
+👉 Process:
+
+Load dataset
+Clean text
+Feature extraction
+Convert text → numbers (TF-IDF)
+Train models
+Models:
+Classifier → predicts clarity
+Regressor → predicts score
+Output → models/*.pkl
+🟢 STEP 3: SAVE MODELS
+
+Models saved as:
+
+models/clf_model.pkl
+models/reg_model.pkl
+models/vectorizer.pkl
+models/le_clarity.pkl
+
+👉 Used later for prediction
+
+🟢 STEP 4: PIPELINE AUTOMATION (pipeline.py)
+
+👉 This file controls everything:
+
+Generate Data → Train Model → Save Model
+
+Run:
+
+python pipeline.py
+🟢 STEP 5: BACKEND SERVER (app.py)
+
+👉 Flask API runs here
+
+Endpoint:
+
+POST /review
+🟢 STEP 6: USER REQUEST (POSTMAN / UI)
+{
+  "text": "Introduction about AI..."
+}
+🟢 STEP 7: PREDICTION (predict.py)
+
+👉 Inside predict_document():
+
+🔹 7.1 Clean Text
+Remove symbols
+Lowercase
+🔹 7.2 Feature Creation
+TF-IDF vector
+Length
+Intro presence
+Conclusion presence
+🔹 7.3 Model Prediction
+Clarity → good/medium/poor
+Score → 1–10
+🟢 STEP 8: RULE-BASED ANALYSIS
+
+Checks:
+
+✔ Missing Introduction
+✔ Missing Conclusion
+✔ Short content
+✔ Repetition
+✔ Sentence structure
+✔ Capitalization
+
+🟢 STEP 9: SCORE ADJUSTMENT
+
+👉 Adjust ML score based on rules:
+
+Score = ML Score - Penalties
+🟢 STEP 10: FEEDBACK GENERATION
+
+👉 Generates smart message:
+
+"Document needs improvement..."
+🟢 STEP 11: LANGUAGE DETECTION
+
+✔ Tamil
+✔ English
+
+🟢 STEP 12: TRANSLATION
+
+✔ English → Tamil
+
+🟢 STEP 13: FINAL OUTPUT
+Language Detected: English
+
+--- English Output ---
+Clarity: good
+Score: 7.2/10
+Issues: Missing Conclusion
+
+--- Tamil Output ---
+...
+🟢 STEP 14: RESPONSE RETURN
+
+Flask returns:
+
+{
+  "status": "success",
+  "output": "..."
+}
+🧠 COMPLETE DATA FLOW DIAGRAM
+User Input
+   ↓
+Flask API (app.py)
+   ↓
+predict.py
+   ↓
+ML Models (pkl files)
+   ↓
+Rule Engine
+   ↓
+Score Adjustment
+   ↓
+Translation Engine
+   ↓
+Final Output
+   ↓
+Frontend / Postman

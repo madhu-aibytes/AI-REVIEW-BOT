@@ -1,0 +1,191 @@
+# ============================================
+# AI REVIEW BOT
+# --------------------------------------------
+# This project analyzes documents and provides:
+# - Clarity prediction (ML Model)
+# - Score prediction (Regression Model)
+# - Rule-based issue detection
+# - Bilingual output (English + Tamil)
+# - Automatic dataset generation & training
+# ============================================
+
+
+
+
+# ============================================
+# LOAD DATASET
+# --------------------------------------------
+# Reads dataset containing:
+# text     → document content
+# clarity  → label (good / medium / poor)
+# score    → rating (1–10)
+# ============================================
+
+# ============================================
+# TEXT PREPROCESSING
+# --------------------------------------------
+# Converts text to lowercase
+# Removes special characters
+# Helps ML model understand patterns better
+# ============================================
+
+
+
+# ============================================
+# FEATURE ENGINEERING
+# --------------------------------------------
+# Extracts additional useful features:
+# - Length of text
+# - Presence of introduction
+# - Presence of conclusion
+# Improves model accuracy
+# ============================================
+
+
+
+# ============================================
+# TEXT VECTORIZATION (TF-IDF)
+# --------------------------------------------
+# Converts text into numerical format
+# So machine learning model can process it
+# ============================================
+
+
+
+# ============================================
+# LABEL ENCODING
+# --------------------------------------------
+# Converts clarity labels (good/medium/poor)
+# into numeric values for model training
+# ============================================
+
+
+
+
+# ============================================
+# DATA SPLITTING
+# --------------------------------------------
+# Splits data into:
+# - Training data (for learning)
+# - Testing data (for evaluation)
+# ============================================
+
+
+# ============================================
+# MODEL TRAINING
+# --------------------------------------------
+# RandomForestClassifier → predicts clarity
+# RandomForestRegressor → predicts score
+# ============================================
+
+
+
+# ============================================
+# MODEL EVALUATION
+# --------------------------------------------
+# Accuracy → classification performance
+# MSE → regression error
+# ============================================
+
+
+# ============================================
+# MODEL SAVING
+# --------------------------------------------
+# Saves trained models using pickle
+# So they can be reused without retraining
+# ============================================
+
+
+
+# ============================================
+# LANGUAGE DETECTION
+# --------------------------------------------
+# Detects if input is Tamil or English
+# Based on Unicode character range
+# ============================================
+
+
+# ============================================
+# RULE-BASED VALIDATION
+# --------------------------------------------
+# Checks document quality:
+# - Introduction presence
+# - Conclusion presence
+# - Content length
+# - Sentence structure
+# - Repetition
+# - Capitalization
+# ============================================
+
+
+
+
+# ============================================
+# SCORE ADJUSTMENT
+# --------------------------------------------
+# Adjusts ML predicted score based on:
+# - Clarity level
+# - Identified issues
+# Makes output more realistic
+# ============================================
+
+
+
+# ============================================
+# FEEDBACK GENERATION
+# --------------------------------------------
+# Generates meaningful feedback based on:
+# - Clarity
+# - Score
+# - Issues
+# ============================================
+
+
+
+# ============================================
+# TRANSLATION (ENGLISH → TAMIL)
+# --------------------------------------------
+# Uses GoogleTranslator
+# Converts output into Tamil language
+# ============================================
+
+
+
+# ============================================
+# FINAL OUTPUT GENERATION
+# --------------------------------------------
+# Combines:
+# - Language detection
+# - English output
+# - Tamil output
+# Returns structured response
+# ============================================
+
+
+# ============================================
+# FLASK API SERVER
+# --------------------------------------------
+# Handles client requests
+# Provides endpoint for document review
+# ============================================
+
+
+
+
+# ============================================
+# /review API
+# --------------------------------------------
+# Accepts text input
+# Sends to ML model
+# Returns structured output
+# ============================================
+
+
+# ============================================
+# AUTO TRAINING PIPELINE
+# --------------------------------------------
+# Automatically:
+# - Generates dataset
+# - Trains model
+# - Saves models
+# ============================================

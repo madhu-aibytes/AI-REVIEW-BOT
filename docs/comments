@@ -1,0 +1,16 @@
+#To train the model
+py train.py
+
+#To run the app
+py app.py
+
+#to generate dataset
+py generate_dataset.py
+
+
+#to predict
+py predict.py
+
+#to pipeline
+py pipeline.py
+
